@@ -11,26 +11,6 @@ import BookTable from "./BookTable";
 import bookStore from "./stores/bookStore";
 
 class BookList extends Component {
-  state = {
-    books: [],
-    loading: true
-  };
-
-  async componentDidMount() {
-    try {
-      const res = await instance.get(
-        "https://the-index-api.herokuapp.com/api/books/"
-      );
-      const books = res.data;
-      this.setState({
-        books,
-        loading: false
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   filterBooksByColor = bookColor =>
     this.state.books.filter(book => book.color === bookColor);
 
