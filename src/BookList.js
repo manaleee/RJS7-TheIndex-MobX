@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import { observer } from "mobx-react";
 
 // Components
 import Loading from "./Loading";
 import SearchBar from "./SearchBar";
 import BookTable from "./BookTable";
 
-const instance = axios.create({
-  baseURL: "https://the-index-api.herokuapp.com"
-});
+// Stores
+import bookStore from "./stores/bookStore";
 
 class BookList extends Component {
   state = {
@@ -39,19 +39,19 @@ class BookList extends Component {
     let books = this.state.books;
 
     if (bookColor) {
-      books = this.filterBooksByColor(bookColor);
+      books = bookStore.getBooksByColor(bookColor);
     }
 
-    return this.state.loading ? (
+    return bookStore.loading ? (
       <Loading />
     ) : (
       <div>
         <h3>Books</h3>
-        <SearchBar store={{}} />
+        <SearchBar store={bookStore} />
         <BookTable books={books} />
       </div>
     );
   }
 }
 
-export default BookList;
+export default observer(BookList);
