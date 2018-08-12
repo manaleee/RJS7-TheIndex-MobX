@@ -11,12 +11,9 @@ import BookTable from "./BookTable";
 import bookStore from "./stores/bookStore";
 
 class BookList extends Component {
-  filterBooksByColor = bookColor =>
-    this.state.books.filter(book => book.color === bookColor);
-
   render() {
     const bookColor = this.props.match.params.bookColor;
-    let books = this.state.books;
+    let books = bookStore.filteredBooks;
 
     if (bookColor) {
       books = bookStore.getBooksByColor(bookColor);
