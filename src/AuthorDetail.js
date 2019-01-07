@@ -16,7 +16,7 @@ class AuthorDetail extends Component {
     const books = author.books.map(bookID => bookStore.getBookById(bookID));
 
     return (
-      <div className="author">
+      <div>
         <div>
           <h3>{authorName}</h3>
           <img

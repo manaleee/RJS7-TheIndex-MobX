@@ -14,7 +14,7 @@ class BookStore {
 
   fetchBooks() {
     return instance
-      .get("https://the-index-api.herokuapp.com/api/books/")
+      .get("/api/books/")
       .then(res => res.data)
       .then(books => {
         this.books = books;
@@ -25,7 +25,7 @@ class BookStore {
 
   get filteredBooks() {
     return this.books.filter(book => {
-      return book.title.toLowerCase().includes(this.query);
+      return book.title.toLowerCase().includes(this.query.toLowerCase());
     });
   }
 
@@ -33,7 +33,7 @@ class BookStore {
     return this.books.find(book => +book.id === +id);
   }
 
-  getBooksByColor(color) {
+  filterBooksByColor(color) {
     return this.filteredBooks.filter(book => book.color === color);
   }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 
 // Components
@@ -16,7 +15,7 @@ class BookList extends Component {
     let books = bookStore.filteredBooks;
 
     if (bookColor) {
-      books = bookStore.getBooksByColor(bookColor);
+      books = bookStore.filterBooksByColor(bookColor);
     }
 
     return bookStore.loading ? (
