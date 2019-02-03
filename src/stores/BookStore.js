@@ -6,22 +6,22 @@ const instance = axios.create({
 });
 
 class BookStore {
-  constructor() {
-    this.books = [];
-    this.query = "";
-    this.loading = true;
-  }
+  books = [];
 
-  fetchBooks() {
-    return instance
-      .get("/api/books/")
-      .then(res => res.data)
-      .then(books => {
-        this.books = books;
-        this.loading = false;
-      })
-      .catch(err => console.error(err));
-  }
+  query = "";
+
+  loading = true;
+
+  fetchBooks = async () => {
+    try {
+      const res = await instance.get("/api/books/");
+      const books = res.data;
+      this.books = books;
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   get filteredBooks() {
     return this.books.filter(book => {
@@ -29,13 +29,10 @@ class BookStore {
     });
   }
 
-  getBookById(id) {
-    return this.books.find(book => +book.id === +id);
-  }
+  getBookById = id => this.books.find(book => +book.id === +id);
 
-  filterBooksByColor(color) {
-    return this.filteredBooks.filter(book => book.color === color);
-  }
+  filterBooksByColor = color =>
+    this.filteredBooks.filter(book => book.color === color);
 }
 
 decorate(BookStore, {
