@@ -8,7 +8,7 @@ import SearchBar from "./SearchBar";
 // Store
 import authorStore from "./stores/authorStore";
 
-function AuthorsList() {
+const AuthorList = () => {
   const authorCards = authorStore.filteredAuthors.map(author => (
     <AuthorCard key={author.id} author={author} />
   ));
@@ -20,6 +20,6 @@ function AuthorsList() {
       <div className="row">{authorCards}</div>
     </div>
   );
-}
+};
 
-export default observer(AuthorsList);
+export default observer(AuthorList);

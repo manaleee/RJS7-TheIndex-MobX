@@ -2,7 +2,7 @@ import React from "react";
 
 import BookRow from "./BookRow";
 
-function BookTable(props) {
+const BookTable = props => {
   const bookRows = props.books.map(book => (
     <BookRow key={book.id} book={book} />
   ));
@@ -19,6 +19,6 @@ function BookTable(props) {
       <tbody>{bookRows}</tbody>
     </table>
   );
-}
+};
 
 export default BookTable;

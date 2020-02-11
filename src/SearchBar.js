@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-function SearchBar(props) {
+const SearchBar = props => {
   const store = props.store;
   return (
     <div className="form-group col-lg-6 col-12 mx-auto">
@@ -20,6 +20,6 @@ function SearchBar(props) {
       </div>
     </div>
   );
-}
+};
 
 export default SearchBar;

@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 // Components
 import Sidebar from "./Sidebar";
 import Loading from "./Loading";
-import AuthorsList from "./AuthorsList";
+import AuthorList from "./AuthorList";
 import AuthorDetail from "./AuthorDetail";
 import BookList from "./BookList";
 
@@ -21,7 +21,7 @@ function App() {
         <Switch>
           <Redirect exact from="/" to="/authors" />
           <Route path="/authors/:authorID" component={AuthorDetail} />
-          <Route path="/authors/" component={AuthorsList} />
+          <Route path="/authors/" component={AuthorList} />
           <Route path="/books/:bookColor?" component={BookList} />
         </Switch>
       );

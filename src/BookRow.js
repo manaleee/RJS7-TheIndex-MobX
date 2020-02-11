@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function BookRow(props) {
+const BookRow = props => {
   const book = props.book;
 
   const authors = book.authors.map(author => (
@@ -33,6 +33,6 @@ function BookRow(props) {
       </td>
     </tr>
   );
-}
+};
 
 export default BookRow;
